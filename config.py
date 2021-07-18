@@ -34,6 +34,7 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(),   desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(),            desc="Reset all window sizes"),
+    Key([mod, "control"], "z", lazy.spawn("dm-tool lock"),   desc="Grow window up"),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -69,9 +70,12 @@ keys = [
 group_names = [("", {'layout': 'monadtall'}),
                ("", {'layout': 'monadtall'}),
                ("", {'layout': 'monadtall'}),
-               ("", {'layout': 'monadtall'}),
+               ("", {'layout': 'monadtall'}),
                ("", {'layout': 'monadtall'}),
-               ("", {'layout': 'floating'})]
+               ("", {'layout': 'monadtall'}),
+               ("", {'layout': 'monadtall'}),
+               ("", {'layout': 'floating'}),
+               ]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
@@ -128,7 +132,7 @@ screens = [
                     background = colors[0]),
                 widget.GroupBox(
                    font = "Ubuntu Bold",
-                    fontsize = 9,
+                    fontsize = 10,
                     margin_y = 4,
                     margin_x = 0,
                     padding_y = 5,
