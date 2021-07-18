@@ -6,7 +6,7 @@ from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.lazy import lazy
 from typing import List
-
+from datetime import date
 
 mod = "mod4"
 ctrl = "control"
@@ -59,6 +59,11 @@ keys = [
     Key([mod], "F2", lazy.spawn('pactl -- set-sink-volume 0 -10%'),      desc="Kill focused window"),
     Key([mod], "F3", lazy.spawn('pactl -- set-sink-volume 0 +10%'),      desc="Kill focused window"),
     Key([mod], "F1", lazy.spawn('pactl -- set-sink-volume 0 0'),      desc="Kill focused window"),
+
+    KeyChord([mod], "s", [
+        Key([], "f", lazy.spawn("bash /home/lenovo/.config/qtile/scripts/screenshot_full.sh")),
+        Key([], "s", lazy.spawn("bash /home/lenovo/.config/qtile/scripts/screenshot_partial.sh"))
+    ])
 ]
 
 group_names = [("", {'layout': 'monadtall'}),
@@ -157,7 +162,7 @@ screens = [
                        text = '',
                        background = colors[0],
                        foreground = "#5e81ac",
-                       padding = 0,
+                       padding = -12.5,
                        fontsize = 39
                        ), 
                 widget.CurrentLayout(
@@ -167,7 +172,7 @@ screens = [
                        text = '',
                        background = "#5e81ac",
                        foreground = "#a3be8c",
-                       padding = 0,
+                       padding = -12.5,
                        fontsize = 39
                        ), 
                 widget.Clock(
@@ -178,7 +183,7 @@ screens = [
                        text = '',
                        background = "#a3be8c",
                        foreground = "#bf616a",
-                       padding = 0,
+                       padding = -12.5,
                        fontsize = 39
                        ),
                 widget.TextBox(
@@ -196,7 +201,7 @@ screens = [
                        text = '',
                        background = "#bf616a",
                        foreground = "#4c566a",
-                       padding = 0,
+                       padding = -12.5,
                        fontsize = 39
                        ),
                 widget.Systray(
@@ -208,7 +213,7 @@ screens = [
                     foreground = colors[2],
                     background = "#4c566a")
             ],
-            20,
+            22,
         ),
     ),
 ]
