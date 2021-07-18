@@ -102,6 +102,7 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.Max(**layout_theme),
+    layout.Floating(**layout_theme),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Columns(border_focus_stack='#d75f5f'),
@@ -117,7 +118,7 @@ layouts = [
 widget_defaults = dict(
     font='Ubuntu Bold',
     fontsize=10,
-    padding=4,
+    padding=8,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -132,7 +133,7 @@ screens = [
                     background = colors[0]),
                 widget.GroupBox(
                    font = "Ubuntu Bold",
-                    fontsize = 10,
+                    fontsize = 11,
                     margin_y = 4,
                     margin_x = 0,
                     padding_y = 5,
@@ -155,19 +156,14 @@ screens = [
                 widget.WindowName(
                     foreground = colors[2],
                     background = colors[0],
-                    padding = 10,
-                    margin = 5),
-                widget.Chord(
-                    chords_colors={'launch': ("#ff0000", "#ffffff"),},
-                    name_transform=lambda name: name.upper(),
-                    foreground = colors[2],
-                    background = colors[0]),
+                    padding = 15,
+                    margin = -4),
                  widget.TextBox(
                        text = '',
                        background = colors[0],
                        foreground = "#5e81ac",
-                       padding = -12.5,
-                       fontsize = 39
+                       padding = -15.5,
+                       fontsize = 46
                        ), 
                 widget.CurrentLayout(
                     foreground = colors[2],
@@ -176,19 +172,19 @@ screens = [
                        text = '',
                        background = "#5e81ac",
                        foreground = "#a3be8c",
-                       padding = -12.5,
-                       fontsize = 39
+                       padding = -15.5,
+                       fontsize = 46
                        ), 
                 widget.Clock(
-                    format='%Y-%m-%d %a %I:%M %p',
+                    format='%I:%M %p %d / %m / %Y %a',
                     foreground = colors[2],
                     background = "#a3be8c"),
                 widget.TextBox(
                        text = '',
                        background = "#a3be8c",
                        foreground = "#bf616a",
-                       padding = -12.5,
-                       fontsize = 39
+                       padding = -15.5,
+                       fontsize = 46
                        ),
                 widget.TextBox(
                        text = 'Battery: ',
@@ -205,8 +201,8 @@ screens = [
                        text = '',
                        background = "#bf616a",
                        foreground = "#4c566a",
-                       padding = -12.5,
-                       fontsize = 39
+                       padding = -15.5,
+                       fontsize = 46
                        ),
                 widget.Systray(
                     foreground = colors[2],
@@ -226,7 +222,7 @@ screens = [
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
+    Drag([mod,'control'], "Button1", lazy.window.set_size_floating(),
          start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front())
 ]
