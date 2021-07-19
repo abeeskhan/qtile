@@ -20,7 +20,6 @@ keys = [
     Key([mod], "l",     lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j",     lazy.layout.down(),  desc="Move focus down"),
     Key([mod], "k",     lazy.layout.up(),    desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(),  desc="Move window focus to other window"),
 
     ## Move windows between left/right columns or move up/down in current stack.
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
@@ -34,7 +33,7 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(),   desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(),            desc="Reset all window sizes"),
-    Key([mod, "control"], "z", lazy.spawn("dm-tool lock"),   desc="Grow window up"),
+    Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc='toggle floating' ),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -48,27 +47,11 @@ keys = [
     Key([mod], "q", lazy.window.kill(),   desc="Kill focused window"),
 
     Key([mod, "control"], "p", lazy.restart(),  desc="Restart Qtile"),
-    Key([mod, "control"], "q", lazy.spawn('rofi -show power-menu -modi power-menu:rofi-power-menu'), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(),            desc="Spawn a command using a prompt widget"),
-
-    #Rofi
-    Key([mod], "space", lazy.spawn('rofi -show drun'), desc="Kill focused window"),
-    Key([mod], "p", lazy.spawn('rofi -show run'),      desc="Kill focused window"),
-
-    Key([mod], "F11", lazy.spawn('brightnessctl -d "intel_backlight" set 10%-'),      desc="Kill focused window"),
-    Key([mod], "F12", lazy.spawn('brightnessctl -d "intel_backlight" set +10%'),      desc="Kill focused window"),
-    Key([mod], "F2", lazy.spawn('pactl -- set-sink-volume 0 -10%'),      desc="Kill focused window"),
-    Key([mod], "F3", lazy.spawn('pactl -- set-sink-volume 0 +10%'),      desc="Kill focused window"),
-    Key([mod], "F1", lazy.spawn('pactl -- set-sink-volume 0 0'),      desc="Kill focused window"),
-
-    KeyChord([mod], "s", [
-        Key([], "f", lazy.spawn("bash /home/lenovo/.config/qtile/scripts/screenshot_full.sh")),
-        Key([], "s", lazy.spawn("bash /home/lenovo/.config/qtile/scripts/screenshot_partial.sh"))
-    ])
+    Key([mod], "r", lazy.spawncmd(),            desc="Spawn a command using a prompt widget")
 ]
 
 group_names = [("", {'layout': 'monadtall'}),
-               ("", {'layout': 'monadtall'}),
+               ("", {'layout': 'max'}),
                ("", {'layout': 'monadtall'}),
                ("", {'layout': 'monadtall'}),
                ("", {'layout': 'monadtall'}),
@@ -221,7 +204,7 @@ screens = [
                     foreground = colors[2],
                     background = "#4c566a")
             ],
-            22,
+            20,
         ),
     ),
 ]
@@ -258,9 +241,9 @@ reconfigure_screens = True
 # focus, should we respect this or not?
 auto_minimize = True
 
-@hook.subscribe.startup_once
-def start_once():
-    home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
+#  @hook.subscribe.startup_once
+#  def start_once():
+#      home = os.path.expanduser('~')
+#      subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
 
 wmname = "LG3D"
