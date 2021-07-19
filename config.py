@@ -69,7 +69,8 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 layout_theme = {"border_width": 2,
                 "margin": 4,
                 "border_focus": "8fbcbb",
-                "border_normal": "2e3440"
+                "border_normal": "2e3440",
+                "change_ratio": 0.5
                 }
 
 colors = [["#2e3440", "#2e3440"], # panel background
