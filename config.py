@@ -109,7 +109,7 @@ layouts = [
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.RatioTile(),
-    # layout.Tile(),
+    layout.Tile(**layout_theme),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
@@ -128,9 +128,13 @@ screens = [
             [
                 widget.Sep(
                     linewidth = 0,
-                    padding = 6,
+                    padding = 1,
                     foreground = colors[2],
                     background = colors[0]),
+                widget.CurrentLayoutIcon(
+                    foreground = colors[2],
+                    background = colors[0],
+                    scale = 0.6),
                 widget.GroupBox(
                    font = "Ubuntu Bold",
                     fontsize = 11,
@@ -165,9 +169,13 @@ screens = [
                        padding = -15.5,
                        fontsize = 46
                        ), 
-                widget.CurrentLayout(
-                    foreground = colors[2],
-                    background = "#5e81ac"),
+                widget.Net(
+                       interface = "wlp2s0",
+                       format = '{down} ↓↑ {up}',
+                       foreground = colors[2],
+                       background = "#5e81ac",
+                       padding = 5
+                       ),
                  widget.TextBox(
                        text = '',
                        background = "#5e81ac",

@@ -12,3 +12,4 @@ run nitrogen --restore &
 run nm-applet &
 run blueman-applet &
 run volumeicon &
+run dunst &
